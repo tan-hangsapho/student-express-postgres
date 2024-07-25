@@ -24,7 +24,11 @@ export class StudentService {
   }
   async getStudentById(id: number) {
     try {
-      return await this.studentRepo.getStudentById(id);
+      const student = await this.studentRepo.getStudentById(id);
+      if (!student) {
+        throw new APIError("Student not found", StatusCode.NotFound);
+      }
+      return student;
     } catch (error) {
       throw error;
     }

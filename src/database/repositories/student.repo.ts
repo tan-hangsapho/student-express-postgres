@@ -11,6 +11,7 @@ export class StudentRepository {
     try {
       const createStudentRepo = this.appData.getRepository(Student);
       const newStd = createStudentRepo.create(std);
+      await createStudentRepo.save(newStd);
       return newStd;
     } catch (error) {
       throw error;
