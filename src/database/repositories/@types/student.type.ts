@@ -5,3 +5,6 @@ export interface IStudent {
   email: string;
   description: string;
 }
+export interface QueryParams {
+  query?: string;
+}

@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
   database: config.postgresDb,
   entities: [Student],
   synchronize: true, // Disable in production
-  logging: config.logLevel === "debug" ? ["query", "error"] : ["error"],
+  logging: ["error"],
 });
 export default class ConnectPostgres {
   private static instance: ConnectPostgres;

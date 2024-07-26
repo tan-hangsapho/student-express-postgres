@@ -1,6 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Index, Check } from "typeorm";
 
 @Entity()
+@Index(["isDeleted"])
+@Check(`"age" >= 0 AND "age" <= 120`)
 export class Student {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -19,4 +21,7 @@ export class Student {
 
   @Column({ type: "text", nullable: true, default: "No description" })
   description?: string;
+
+  @Column({ type: "boolean", default: false })
+  isDeleted!: boolean;
 }
