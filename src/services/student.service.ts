@@ -1,4 +1,7 @@
-import { IStudent } from "src/database/repositories/@types/student.type";
+import {
+  IStudent,
+  QueryParams,
+} from "src/database/repositories/@types/student.type";
 import { StudentRepository } from "src/database/repositories/student.repo";
 import APIError from "src/errors/api-error";
 import { StatusCode } from "src/utils/const/status-code";
@@ -11,6 +14,13 @@ export class StudentService {
   async createStudent(std: IStudent) {
     try {
       return await this.studentRepo.createStudent(std);
+    } catch (error) {
+      throw error;
+    }
+  }
+  async findStudentByQuery(queryParam: QueryParams) {
+    try {
+      return await this.studentRepo.findStudentByQuery(queryParam);
     } catch (error) {
       throw error;
     }

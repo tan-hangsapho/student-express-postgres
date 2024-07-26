@@ -30,7 +30,6 @@ function createConfig(configPath: string) {
     env: process.env.NODE_ENV,
     port: process.env.PORT,
     logLevel: process.env.LOG_LEVEL,
-    // postgresUrl: process.env.POSTGRES_URL,
     postgresDb: process.env.POSTGRES_DB,
     postgresUser: process.env.POSTGRES_USER,
     postgresPassword: process.env.POSTGRES_PASSWORD,

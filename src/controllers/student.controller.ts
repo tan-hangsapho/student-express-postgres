@@ -18,6 +18,22 @@ export class StudentController {
       next(error);
     }
   }
+  async findStudentByQuery(req: Request, res: Response, next: NextFunction) {
+    try {
+      const query = req.query;
+      const students = await this.student.findStudentByQuery(query);
+      if (!students) {
+        return res
+          .status(StatusCode.BadRequest)
+          .json({ message: "Error query Student" });
+      }
+      return res
+        .status(StatusCode.OK)
+        .send({ message: "GET Student by Query successfully", data: students });
+    } catch (error) {
+      next(error);
+    }
+  }
   async getAllStudent(_req: Request, res: Response, next: NextFunction) {
     try {
       const students = await this.student.getAllStudents();
